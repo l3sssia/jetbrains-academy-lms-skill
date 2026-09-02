@@ -1,0 +1,3 @@
+interface:
+  display_name: "JetBrains Academy LMS"
+  short_description: "Build tools for the JetBrains Academy teaching LMS"
