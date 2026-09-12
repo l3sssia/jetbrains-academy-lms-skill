@@ -101,4 +101,9 @@ The captured form allowed decimal `review-score` values from `0` to the assignme
 3. For each assignment, list matching personal assignments.
 4. Use each personal-assignment ID to open the submission page or score-audit log.
 
-For assignments with `solutionFormat: "github"`, repository-level grades may come from GitHub Classroom rather than this LMS. A separately observed GitHub Classroom endpoint was `GET /assignments/{github_classroom_assignment_id}/grades`, with fields such as `github_username`, `roster_identifier`, `points_awarded`, and `points_available`; it is not an LMS endpoint.
+For assignments with `solutionFormat: "github"`, grading normally runs through the
+LMS-native GitHub integration: a per-assignment template repository, a student fork, and
+a grader workflow dispatched with a `grade` `repository_dispatch` event. See
+[GitHub assignments and automatic grading](github-assignments.md) for that contract.
+
+GitHub Classroom is a separate product and not part of this LMS. A separately observed GitHub Classroom endpoint was `GET /assignments/{github_classroom_assignment_id}/grades`, with fields such as `github_username`, `roster_identifier`, `points_awarded`, and `points_available`; it is not an LMS endpoint, and should only be used when the user has explicitly asked for a GitHub Classroom workflow.
