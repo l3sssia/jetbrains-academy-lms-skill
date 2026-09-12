@@ -129,8 +129,11 @@ If `run-name` must carry extra context, keep `lms_run_id` last, for example
 - Treat student code as untrusted input. It runs in the grader job with access to the
   dispatch payload, so avoid exposing organization secrets to that job, and prefer
   running student code with the minimum permissions the checks need.
-- Clamp `score` to `[0, max_score]` and keep `max_score` a constant in the grader, not
-  something derived from which tests happened to run.
+- Clamp `score` to `[0, max_score]`. Never derive `max_score` from which tests happened
+  to run: hold it as fixed configuration. In a grader serving several assignments that
+  means a lookup keyed by `template_repo_name`, not one global constant — each
+  assignment has its own maximum, and sending the wrong one rewrites that assignment's
+  max score in the LMS.
 - Use `template_repo_name` to select the right test suite when one grader repository
   serves multiple assignments; fail loudly (with a written `results.json` scoring 0 and
   a clear subtask name) on an unrecognized template rather than grading against the
