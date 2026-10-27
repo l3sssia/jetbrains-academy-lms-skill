@@ -1,0 +1,9 @@
+# Never commit LMS session material or browser captures.
+*.har
+credentials.json
+.ja-lms*
+.env
+.env.*
+
+__pycache__/
+*.pyc
