@@ -10,8 +10,31 @@ with Codex.
 - `.../references/github-assignments.md` — LMS-native GitHub assignments: template
   repositories, student forks, the `grade` `repository_dispatch` payload, and the
   `grading-results` / `results.json` grader contract.
-- `.../references/api-reference.md` — reverse-engineered teaching API: assignments,
-  enrollments, personal assignments, score audit log, review form.
+- `.../references/api-reference.md` — reverse-engineered teaching API: authentication,
+  course discovery, assignments, enrollments, personal assignments, score audit log,
+  assignment add/edit forms, review form.
+- `.../references/client.md` and `.../scripts/` — `ja_lms`, a dependency-free Python
+  client and `ja-lms` CLI: pluggable session credentials with update/refresh, read
+  endpoints, and dry-run-first assignment add/edit.
+
+## Using the client
+
+Python 3.8+, standard library only. Nothing to install:
+
+```sh
+cd skills/jetbrains-academy-lms/scripts
+./ja-lms auth set                       # paste sessionid/csrftoken from your browser (hidden input)
+./ja-lms courses
+./ja-lms assignments 42
+./ja-lms assignment edit 208 --deadline "2030-10-10 23:59"           # dry run: shows the diff
+./ja-lms assignment edit 208 --deadline "2030-10-10 23:59" --apply   # submits
+```
+
+Credentials are never stored in this repository. They come from `JA_LMS_SESSIONID` /
+`JA_LMS_CSRFTOKEN`, or from `~/.config/ja-lms/credentials.json` (mode 600), or from a
+provider you plug in. See [`references/client.md`](skills/jetbrains-academy-lms/references/client.md).
+
+Run the offline tests with `python -m unittest discover -s tests`.
 
 ## Install
 

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- Synthetic fixture modeled on the LMS add/edit assignment page. All names and IDs are fake. -->
+<html><body>
+<form action="/search/" method="get"><input type="text" name="q" value=""></form>
+<form method="post" enctype="multipart/form-data">
+<input type="hidden" name="csrfmiddlewaretoken" value="FAKE-FORM-TOKEN">
+<input type="text" name="assignment-title" value="HW 1" required>
+<textarea name="assignment-text" required>
+Solve &amp; submit.</textarea>
+<input type="file" name="assignment-attachments">
+<input type="hidden" name="assignment-attachments-clear" value="">
+<select name="assignment-submission_type" required>
+  <option value="">---------</option>
+  <option value="online">Online Submission</option>
+  <option value="jba">JetBrains Academy Course</option>
+  <option value="github" selected>GitHub</option>
+  <option value="penalty">Penalty</option>
+  <option value="other">No Submission</option>
+</select>
+<input type="number" name="assignment-maximum_score" value="10" required>
+<input type="number" name="assignment-weight" value="1.00" min="0" max="1" step="0.01" required>
+<input type="text" name="assignment-ttc" value="" placeholder="hours:minutes">
+<input type="text" name="assignment-opens_at_0" value="01.10.2030" placeholder="dd.mm.yyyy" required>
+<input type="text" name="assignment-opens_at_1" value="09:00" placeholder="hh:mm" required>
+<input type="text" name="assignment-deadline_at_0" value="08.10.2030" placeholder="dd.mm.yyyy" required>
+<input type="text" name="assignment-deadline_at_1" value="23:59" placeholder="hh:mm" required>
+<select name="assignment-time_zone">
+  <option value="UTC">GMT+00:00 UTC</option>
+  <option value="Europe/Berlin" selected>GMT+02:00 Europe/Berlin</option>
+</select>
+<input type="number" name="assignment-jba_course_id" value="">
+<input type="text" name="assignment-github_template_repository" value="example-org/hw-01">
+<input type="text" name="assignment-github_grader_repository" value="example-org/grader">
+<select name="assignment-github_grading_mode">
+  <option value="manual">Manual</option>
+  <option value="sync" selected>Sync</option>
+  <option value="once">Once</option>
+</select>
+<select name="assignment-assignee_mode">
+  <option value="off">Without a responsible person</option>
+  <option value="manual">Choose from the list</option>
+  <option value="sg_default" selected>Student Group - Default</option>
+  <option value="sg_custom">Student Group - Custom</option>
+</select>
+<input type="checkbox" name="responsible-teacher-1-active" checked>
+<input type="checkbox" name="responsible-teacher-2-active">
+<select name="student-group-assignee-7-teacher">
+  <option value="" selected>-------</option>
+  <option value="1">Teacher Alpha</option>
+  <option value="2">Teacher Beta</option>
+</select>
+<input type="hidden" name="bucket-TOTAL_FORMS" value="0">
+<input type="hidden" name="bucket-INITIAL_FORMS" value="0">
+<input type="hidden" name="bucket-MIN_NUM_FORMS" value="0">
+<input type="hidden" name="bucket-MAX_NUM_FORMS" value="1000">
+<select name="bucket-__prefix__-student_groups" multiple><option value="7">Group</option></select>
+<input type="button" name="fill_all_sg" value="Fill All">
+<input type="checkbox" name="bucket-__prefix__-DELETE">
+<input type="submit" name="save" value="Save">
+<input type="button" name="cancel" value="Cancel">
+</form>
+</body></html>
